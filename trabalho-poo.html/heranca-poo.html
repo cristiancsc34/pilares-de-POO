@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herança em POO</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        nav {
+            background-color: #343839;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            background-color: #2f3537;
+            border-radius: 5px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .topo {
+            background-color: #343839;
+            padding: 20px;
+            color: beige;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        section {
+            padding: 40px 0;
+            border-bottom: 2px solid #ddd;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #343839;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .voltar {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #343839;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .voltar:hover {
+            background-color: #2f3537;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#topo">Início</a>
+        <a href="#heranca">O que é Herança?</a>
+        <a href="#codigo">Exemplo de Código</a>
+        <a href="#explicacao">Explicação</a>
+        <a href="principal-poo.html" class="voltar">Voltar ao menu principal</a>
+    </nav>
+
+    <div class="container">
+        <!-- Seção Topo -->
+        <section id="topo" class="topo">
+            <h1>Herança em POO</h1>
+        </section>
+
+        <!-- Seção O que é Herança -->
+        <section id="heranca">
+            <h2>O que é Herança?</h2>
+            <p><strong>Herança</strong> é um dos pilares da Programação Orientada a Objetos (POO) que permite criar uma nova classe com base em uma classe existente. A classe filha herda atributos e métodos da classe pai, promovendo o reaproveitamento de código e facilitando a manutenção. Além disso, a herança possibilita a especialização de comportamentos, onde a classe filha pode adicionar ou modificar funcionalidades da classe pai.</p>
+            <p>Com a herança, é possível criar uma hierarquia entre as classes, onde uma classe mais genérica pode ser estendida por classes mais específicas, tornando o sistema mais modular e flexível.</p>
+        </section>
+
+        <!-- Seção Exemplo de Código -->
+        <section id="codigo">
+            <h2>Exemplo de Código de Herança em POO</h2>
+            <pre>
+class Animal:
+    def __init__(self, nome: str):
+        self.nome = nome
+
+    def falar(self):
+        pass
+
+class Cachorro(Animal):
+    def falar(self):
+        return f"{self.nome} diz: Au Au!"
+
+class Gato(Animal):
+    def falar(self):
+        return f"{self.nome} diz: Miau!"
+
+# Criando objetos das classes filhas
+cachorro = Cachorro("Rex")
+gato = Gato("Felix")
+
+# Chamando o método falar das classes filhas
+print(cachorro.falar())
+print(gato.falar())
+            </pre>
+        </section>
+
+        <!-- Seção Explicação -->
+        <section id="explicacao">
+            <h2>Explicação do Código</h2>
+            <p><strong>Classe Animal:</strong><br>
+            A classe `Animal` é a classe pai, que define o comportamento básico dos animais com o atributo `nome` e o método `falar`, mas não implementa o comportamento de falar. O método `falar` é deixado em branco para ser implementado pelas classes filhas.</p>
+
+            <p><strong>Classes Cachorro e Gato:</strong><br>
+            As classes `Cachorro` e `Gato` herdam de `Animal`. Elas implementam o método `falar` de maneira específica para cada tipo de animal. Cada uma delas define um comportamento único para o método `falar` que retorna uma mensagem diferente, como o latido do cachorro ou o miado do gato.</p>
+
+            <p><strong>Benefícios da Herança:</strong><br>
+            A herança permite que as classes `Cachorro` e `Gato` reutilizem o código da classe `Animal`, sem precisar duplicá-lo. Se houver algum comportamento comum entre os animais, como o nome, a classe `Animal` pode ser compartilhada. Isso torna o código mais limpo, modular e fácil de estender no futuro, caso seja necessário adicionar novos tipos de animais.</p>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encapsulamento em POO</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        nav {
+            background-color: #343839;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            background-color: #2f3537;
+            border-radius: 5px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .topo {
+            background-color: #343839;
+            padding: 20px;
+            color: beige;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        section {
+            padding: 40px 0;
+            border-bottom: 2px solid #ddd;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #343839;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .voltar {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #343839;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .voltar:hover {
+            background-color: #2f3537;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#topo">Início</a>
+        <a href="#encapsulamento">O que é Encapsulamento?</a>
+        <a href="#codigo">Exemplo de Código</a>
+        <a href="#explicacao">Explicação</a>
+        <a href="principal-poo.html" class="voltar">Voltar ao menu principal</a>
+    </nav>
+
+    <div class="container">
+        <!-- Seção Topo -->
+        <section id="topo" class="topo">
+            <h1>Encapsulamento em POO</h1>
+        </section>
+
+        <!-- Seção O que é Encapsulamento -->
+        <section id="encapsulamento">
+            <h2>O que é Encapsulamento?</h2>
+            <p><strong>Encapsulamento</strong> é um dos pilares da Programação Orientada a Objetos (POO). Ele envolve esconder os detalhes internos do funcionamento de um objeto, permitindo que somente as operações permitidas sejam acessadas externamente, e os dados sejam protegidos contra modificações não autorizadas. Isso é feito através da utilização de modificadores de acesso como `private`, `protected`, e `public` nas classes.</p>
+            <p>O encapsulamento melhora a segurança do sistema e permite que os objetos se comportem de maneira previsível e controlada. Isso ajuda na manutenção e organização do código, pois o comportamento interno de um objeto pode ser alterado sem impactar o resto do sistema, desde que a interface pública permaneça a mesma.</p>
+        </section>
+
+        <!-- Seção Exemplo de Código -->
+        <section id="codigo">
+            <h2>Exemplo de Código de Encapsulamento em POO</h2>
+            <pre>
+class ContaBancaria:
+    def __init__(self, saldo: float):
+        self.__saldo = saldo  # Atributo privado, não acessível diretamente de fora da classe
+
+    def depositar(self, valor: float):
+        if valor > 0:
+            self.__saldo += valor
+            print(f"Depósito de R$ {valor:.2f} realizado.")
+        else:
+            print("Valor inválido para depósito!")
+
+    def retirar(self, valor: float):
+        if 0 < valor <= self.__saldo:
+            self.__saldo -= valor
+            print(f"Retirada de R$ {valor:.2f} realizada.")
+        else:
+            print("Saldo insuficiente ou valor inválido!")
+
+    def obter_saldo(self):
+        return self.__saldo  # Método público que permite acesso ao saldo
+
+# Criando uma conta bancária
+conta = ContaBancaria(1000.00)
+
+# Realizando operações
+conta.depositar(500.00)
+conta.retirar(200.00)
+print(f"Saldo atual: R$ {conta.obter_saldo():.2f}")
+            </pre>
+        </section>
+
+        <!-- Seção Explicação -->
+        <section id="explicacao">
+            <h2>Explicação do Código</h2>
+            <p><strong>Classe ContaBancaria:</strong><br>
+            A classe `ContaBancaria` tem um atributo privado chamado `__saldo`, que não pode ser acessado diretamente de fora da classe, garantindo que o valor do saldo seja protegido.</p>
+
+            <p><strong>Modificadores de Acesso:</strong><br>
+            O encapsulamento é implementado através da utilização do modificador de acesso `private` (indicando um atributo privado) e `public` para os métodos, como o `depositar`, `retirar` e `obter_saldo`, que permitem interagir com o objeto de maneira controlada. O acesso direto ao saldo é bloqueado para que o valor só possa ser alterado ou consultado de maneira segura.</p>
+
+            <p><strong>Benefícios do Encapsulamento:</strong><br>
+            Ao proteger o atributo `__saldo`, o código fica mais seguro, pois não é possível alterar diretamente o valor sem passar pelas verificações dos métodos. Além disso, o encapsulamento torna o código mais organizado e flexível, permitindo que a lógica interna da classe seja modificada sem afetar as outras partes do sistema que interagem com ela.</p>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilares - POO</title>
+</head>
+<body  style="background-color: rgb(169, 185, 240);">
+    <h1><b>PILARES EM <abbr title="Programação Orientada a Objetos">POO</abbr></b></h1>
+    <P>Os pilares da Programação Orientada a Objetos são os princípios fundamentais que formam a base desse paradigma de programação. Eles são conceitos que permitem criar software mais modular, reutilizável e fácil de manter.</P>
+    <hr>
+    <h2><b>Alunos integrantes</b></h2>
+    <p>Cristian Costa <br>
+        Davi Carvalho <br>
+        Marcelo Luiz</p><br><hr>
+    
+    <H2>Tipos de pilares</H2>
+    <p><b>Abstração: </b></iframe> <br>
+        A abstração é o processo de ocultar os detalhes complexos de implementação e exibir apenas as informações essenciais para o usuário ou para outros componentes do sistema. Em outras palavras, você trabalha com uma representação simplificada de um objeto ou conceito, focando apenas no que é relevante para a aplicação.
+       <br><br> <b>Exemplo:</b> <br>
+       Imagine que você está programando um jogo de corrida, e precisa criar um carro. Você não vai se preocupar em como o motor funciona, só vai criar um "carro" com algumas características, como a cor e modelo. <br><br>
+       
+      <b> 
+       class Carro: <br>
+           def __init__(self, cor, modelo): <br>
+               self.cor = cor <br>
+               self.modelo = modelo <br> <br>
+       
+           def dirigir(self): <br>
+               print(f"O {self.modelo} está dirigindo!") <br><br>
+       
+       carro1 = Carro("vermelho", "Fusca") <br>
+       carro1.dirigir()  </b><br><br>
+       Aqui, a abstração está no fato de que você está usando um "carro" simplificado. Não está se preocupando com todas as partes do carro, apenas com o que ele faz (dirigir).</p>
+    <br>
+    <p><b>Encapsulamento:</b> <br> 
+        O encapsulamento refere-se à prática de esconder os dados (variáveis e atributos) de uma classe e permitir seu acesso e modificação apenas por meio de métodos específicos. Isso garante o controle sobre como os dados são manipulados, melhorando a segurança e a integridade do sistema. <br><br>
+        <b>Exemplo:</b><br>
+
+        No código abaixo, vamos esconder o "dinheiro" da classe ContaBancária e só permitir que ele seja retirado ou depositado de forma controlada. <br><br>
+        
+      <b>  class ContaBancária: <br>
+            def __init__(self): <br>
+                self.__saldo = 0 -<abbr title="  O saldo é privado, não pode ser acessado diretamente de fora">#</abbr> <br><br>
+        
+            def depositar(self, valor): <br>
+                if valor > 0: <br>
+                    self.__saldo += valor <br>
+                    print(f"Você depositou {valor}. Novo saldo: {self.__saldo}") <br>
+                else: <br>
+                    print("Valor inválido!") <br><br>
+        
+            def retirar(self, valor): <br>
+                if valor <= self.__saldo: <br>
+                    self.__saldo -= valor <br>
+                    print(f"Você retirou {valor}. Saldo restante: {self.__saldo}") <br>
+                else: <br>
+                    print("Saldo insuficiente!") <br><br>
+        
+        conta = ContaBancária() <br>
+        conta.depositar(100) <br> 
+        conta.retirar(50)<br><br></b>
+        Aqui, o encapsulamento acontece porque você não consegue acessar o saldo diretamente, só pode mudar o saldo através dos métodos depositar() e retirar(). Isso garante que as informações não sejam modificadas de forma errada.</p>
+        <br>
+        <p><b>Herança:</b><br>
+            A herança é um mecanismo que permite que uma nova classe (chamada de subclasse) herde atributos e comportamentos (métodos) de uma classe existente (chamada de superclasse). Isso promove a reutilização de código e facilita a criação de hierarquias entre classes. <br><br> <b>Exemplo:</b><br>
+
+            Vamos criar uma classe Animal e depois criar uma classe Cachorro que herda tudo da classe Animal e ainda tem suas próprias características. <br><br>
+            
+            <b>class Animal: <br>
+                def __init__(self, nome):  <br>
+                    self.nome = nome  <br> <br>
+            
+                def falar(self): <br>
+                    print(f"{self.nome} faz um som.") <br> <br>
+            
+            class Cachorro(Animal): <br>
+                def falar(self): <br>
+                    print(f"{self.nome} late!") <br> <br>
+            
+            animal1 = Animal("Bicho") <br>
+            cachorro1 = Cachorro("Rex") <br>
+            
+            animal1.falar()    -    <abbr title="Exibe: Bicho faz um som.">#</abbr> <br>
+            cachorro1.falar()  -    <abbr title=" Exibe: Rex late!">#</abbr>  <br> <br></b>
+            A classe Cachorro herda a classe Animal. Isso significa que, mesmo que Cachorro seja uma classe nova, ela já tem as qualidades de Animal, como o nome e o método falar(). Porém, a classe Cachorro pode modificar o comportamento do método falar().</p> <br>
+        
+<p><b>Polimorfismo:</b><br>
+    O polimorfismo permite que objetos de diferentes classes possam ser tratados de forma semelhante, mas com comportamentos específicos dependendo da classe. Isso significa que o mesmo método pode ser chamado em diferentes objetos e, dependendo do tipo do objeto, ele se comporta de maneira diferente. <br><br>
+   <b>Exemplo:</b> <br><br>
+
+Vamos criar um método falar() em várias classes, mas cada classe vai "falar" de um jeito diferente. <br><br>
+
+class Gato: <br>
+    def falar(self): <br>
+        print("Miau!") <br> <br>
+
+class Pato: <br>
+    def falar(self): <br>
+        print("Quack!") <br> <br>
+
+class Vaca: <br>
+    def falar(self): <br>
+        print("Muuu!") <br> <br>
+
+gato = Gato() <br>
+pato = Pato() <br>
+vaca = Vaca() <br> <br>
+
+<abbr title=" Aqui, estamos chamando o mesmo método `falar()`, mas com comportamentos diferentes:">#</abbr><br>
+gato.falar() -<abbr title="  Exibe: Miau!">#</abbr> <br>
+pato.falar() - <abbr title="Exibe: Quack!">#</abbr> <br>
+vaca.falar() - <abbr title="  Exibe: Muuu!">#</abbr> <br><br>
+O polimorfismo é o que permite que todas essas classes (Gato, Pato, Vaca) usem o mesmo nome de método falar(), mas o comportamento de cada um seja diferente. Então, mesmo que você não saiba exatamente o tipo de animal, você pode chamar falar() e ele vai responder de acordo com o tipo de animal.
+</p>
+
+</body>
+</html>

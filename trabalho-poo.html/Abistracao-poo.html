@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstração em POO</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        nav {
+            background-color: #343839;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            background-color: #2f3537;
+            border-radius: 5px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .topo {
+            background-color: #343839;
+            padding: 20px;
+            color: beige;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        section {
+            padding: 40px 0;
+            border-bottom: 2px solid #ddd;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #343839;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .voltar {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #343839;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .voltar:hover {
+            background-color: #2f3537;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#topo">Início</a>
+        <a href="#abstracao">O que é Abstração?</a>
+        <a href="#codigo">Exemplo de Código</a>
+        <a href="#explicacao">Explicação</a>
+        <a href="principal-poo.html" class="voltar">Voltar ao menu principal</a>
+    </nav>
+
+    <div class="container">
+        <!-- Seção Topo -->
+        <section id="topo" class="topo">
+            <h1>Abstração em POO</h1>
+        </section>
+
+        <!-- Seção O que é Abstração -->
+        <section id="abstracao">
+            <h2>O que é Abstração?</h2>
+            <p><strong>Abstração</strong> é um dos pilares da Programação Orientada a Objetos (POO). Ela envolve ocultar os detalhes de implementação complexos e expor apenas o que é essencial para o usuário ou outras partes do sistema. Em outras palavras, abstração permite que você defina interfaces simples e claras, enquanto o funcionamento interno pode ser escondido.</p>
+            <p>Isso é feito através da definição de classes e métodos abstratos, que especificam o comportamento esperado sem detalhar como ele será implementado. Em POO, a abstração permite criar código mais modular e reutilizável, simplificando a interação com objetos e promovendo uma maior organização.</p>
+        </section>
+
+        <!-- Seção Exemplo de Código -->
+        <section id="codigo">
+            <h2>Exemplo de Código de Abstração em POO</h2>
+            <pre>
+from abc import ABC, abstractmethod
+
+# Classe Abstrata
+class Animal(ABC):
+    @abstractmethod
+    def emitir_som(self):
+        pass
+
+# Subclasses que implementam o método abstrato
+class Cachorro(Animal):
+    def emitir_som(self):
+        return "Au Au!"
+
+class Gato(Animal):
+    def emitir_som(self):
+        return "Miau!"
+
+# Função que demonstra o uso da abstração
+def fazer_animal_falar(animal: Animal):
+    print(animal.emitir_som())
+
+# Criando instâncias de Cachorro e Gato
+cachorro = Cachorro()
+gato = Gato()
+
+# Chamando a função de abstração
+fazer_animal_falar(cachorro)  # Saída: Au Au!
+fazer_animal_falar(gato)      # Saída: Miau!
+            </pre>
+        </section>
+
+        <!-- Seção Explicação -->
+        <section id="explicacao">
+            <h2>Explicação do Código</h2>
+            <p><strong>Classe Abstrata Animal:</strong><br>
+            A classe Animal é definida como uma classe abstrata usando `ABC` (Abstract Base Class). O método `emitir_som` é declarado como abstrato com o decorador `@abstractmethod`. Isso significa que ele não possui implementação na classe base e deve ser implementado pelas subclasses.</p>
+
+            <p><strong>Subclasses Cachorro e Gato:</strong><br>
+            As classes `Cachorro` e `Gato` herdam de `Animal` e implementam o método `emitir_som`. Cada uma tem seu próprio comportamento ao emitir um som (o latido do cachorro e o miado do gato).</p>
+
+            <p><strong>Função `fazer_animal_falar`:</strong><br>
+            A função `fazer_animal_falar` aceita qualquer objeto do tipo `Animal` e chama o método `emitir_som()`. Isso demonstra a abstração de que, independentemente do tipo de animal (cachorro ou gato), o comportamento de emitir som é garantido pela classe abstrata.</p>
+        </section>
+    </div>
+</body>
+</html>

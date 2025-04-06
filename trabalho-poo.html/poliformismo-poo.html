@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polimorfismo em POO</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        nav {
+            background-color: #343839;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            background-color: #2f3537;
+            border-radius: 5px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .topo {
+            background-color: #343839;
+            padding: 20px;
+            color: beige;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        section {
+            padding: 40px 0;
+            border-bottom: 2px solid #ddd;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #343839;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .voltar {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #343839;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .voltar:hover {
+            background-color: #2f3537;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#topo">Início</a>
+        <a href="#polimorfismo">O que é Polimorfismo?</a>
+        <a href="#codigo">Exemplo de Código</a>
+        <a href="#explicacao">Explicação</a>
+        <a href="principal-poo.html" class="voltar">Voltar ao menu principal</a>
+    </nav>
+
+    <div class="container">
+        <!-- Seção Topo -->
+        <section id="topo" class="topo">
+            <h1>Polimorfismo em POO</h1>
+        </section>
+
+        <!-- Seção O que é Polimorfismo -->
+        <section id="polimorfismo">
+            <h2>O que é Polimorfismo?</h2>
+            <p><strong>Polimorfismo</strong> é um dos pilares da Programação Orientada a Objetos (POO) que permite que objetos de diferentes classes sejam tratados de maneira uniforme. Em outras palavras, o polimorfismo permite que diferentes classes possuam métodos com o mesmo nome, mas com comportamentos distintos. Isso aumenta a flexibilidade e a reutilização de código.</p>
+            <p>O polimorfismo pode ser alcançado de duas formas: <strong>sobrecarga</strong> e <strong>sobrescrita de métodos</strong>. A sobrecarga permite que um método tenha múltiplos comportamentos baseados nos parâmetros, enquanto a sobrescrita de métodos permite que uma classe filha substitua um método da classe pai com uma implementação específica.</p>
+        </section>
+
+        <!-- Seção Exemplo de Código -->
+        <section id="codigo">
+            <h2>Exemplo de Código de Polimorfismo em POO</h2>
+            <pre>
+class Animal:
+    def falar(self):
+        raise NotImplementedError("Subclasses devem implementar esse método")
+
+class Cachorro(Animal):
+    def falar(self):
+        return "Au Au!"
+
+class Gato(Animal):
+    def falar(self):
+        return "Miau!"
+
+def fazer_animal_falar(animal: Animal):
+    print(animal.falar())
+
+# Criando objetos das classes filhas
+cachorro = Cachorro()
+gato = Gato()
+
+# Chamando o método falar das classes filhas
+fazer_animal_falar(cachorro)
+fazer_animal_falar(gato)
+            </pre>
+        </section>
+
+        <!-- Seção Explicação -->
+        <section id="explicacao">
+            <h2>Explicação do Código</h2>
+            <p><strong>Classe Animal:</strong><br>
+            A classe `Animal` é a classe base, que possui o método `falar`. Porém, esse método é definido como abstrato, utilizando a exceção `NotImplementedError`, indicando que ele precisa ser implementado pelas classes filhas.</p>
+
+            <p><strong>Classes Cachorro e Gato:</strong><br>
+            As classes `Cachorro` e `Gato` herdam de `Animal` e implementam o método `falar` de maneira específica para cada tipo de animal. No caso do cachorro, ele retorna "Au Au!", enquanto o gato retorna "Miau!". Cada classe tem seu comportamento particular.</p>
+
+            <p><strong>Função fazer_animal_falar:</strong><br>
+            A função `fazer_animal_falar` recebe um objeto do tipo `Animal` e chama o método `falar`. Graças ao polimorfismo, a função pode tratar tanto o `Cachorro` quanto o `Gato` de maneira uniforme, já que ambos têm o método `falar`. Mesmo que as implementações sejam diferentes, o código que chama o método não precisa saber exatamente que tipo de animal é. Isso demonstra o poder do polimorfismo em tornar o código mais flexível e reutilizável.</p>
+
+            <p><strong>Benefícios do Polimorfismo:</strong><br>
+            O polimorfismo permite que diferentes classes implementem comportamentos específicos para um mesmo método, facilitando a manutenção e a expansão do código. Em sistemas grandes e complexos, isso pode melhorar a organização e a legibilidade do código, além de tornar a interação entre objetos mais simples e intuitiva.</p>
+        </section>
+    </div>
+</body>
+</html>
